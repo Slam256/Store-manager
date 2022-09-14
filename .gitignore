@@ -1,3 +1,16 @@
-.DS_Store
+# dependencies
 node_modules
+
+#environment variables
 .env
+
+.coveralls.yml
+
+# testing
+coverage
+.nyc_output
+
+# misc
+package-lock.json
+.DS_Store
+src/.DS_Store
