@@ -1,0 +1,22 @@
+{
+  "name": "store-manager",
+  "version": "1.0.0",
+  "description": "Store management application",
+  "main": "hello.js",
+  "scripts": {
+    "test": "jshint hello.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slam256/Store-manager.git"
+  },
+  "author": "SLAM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Slam256/Store-manager/issues"
+  },
+  "homepage": "https://github.com/Slam256/Store-manager#readme",
+  "devDependencies": {
+    "jshint": "^2.13.5"
+  }
+}
