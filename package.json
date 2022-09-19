@@ -6,8 +6,9 @@
   "scripts": {
     "start": "env-cmd -f .env babel-node src/index.js",
     "dev": "env-cmd -f .env nodemon --watch src --exec babel-node src/index.js",
-    "lint": "",
-    "prepare": "husky install"
+    "lint": "prettier --write .",
+    "prepare": "husky install",
+    "test": "env-cmd -f ./config/test.env nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -33,8 +34,14 @@
   "devDependencies": {
     "@babel/register": "^7.18.9",
     "husky": "^8.0.1",
+    "chai": "^4.3.6",
     "lint-staged": "^13.0.3",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "coveralls": "^3.1.1",
+    "mocha": "^10.0.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.1.0",
+    "supertest": "^6.2.4"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"

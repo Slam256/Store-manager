@@ -1,0 +1,8 @@
+import { Router } from "express";
+import productsRoute from "./products.js";
+
+const routes = Router();
+
+routes.use("/products", productsRoute);
+
+export default routes;

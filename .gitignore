@@ -3,8 +3,9 @@ node_modules
 
 #environment variables
 .env
-
 .coveralls.yml
+config/test.env
+config/dev.env
 
 # testing
 coverage

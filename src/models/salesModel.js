@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const salesSchema = new Schema({
+const SalesSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -12,4 +12,4 @@ const salesSchema = new Schema({
   total: Number,
 });
 
-export default salesModel = mongoose.model("Sales", salesSchema);
+export default mongoose.model("Sales", SalesSchema);
