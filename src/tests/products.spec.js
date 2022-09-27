@@ -9,10 +9,10 @@ import product from "../models/productModel";
 dotenv.config({ path: "../../config/test.env" });
 const { expect } = chai;
 
-before(function (done) {
-  this.timeout(3000);
-  setTimeout(done, 2000);
-});
+// before(function (done) {
+//   this.timeout(3000);
+//   setTimeout(done, 2000);
+// });
 
 describe("Test product function", () => {
   let productId;
@@ -22,8 +22,8 @@ describe("Test product function", () => {
       unitPrice: "100",
       quantity: "10",
     });
-
-    // productId = testProduct.body.product.productId;
+    console.log(testProduct.body, ">>>>>>>>");
+    productId = testProduct.body.createdProduct._id;
   });
 
   afterEach(async () => {
@@ -31,9 +31,7 @@ describe("Test product function", () => {
   });
 
   it("should create new products with all fields", async () => {
-    const response = await (
-      await BaseTest.post("products")
-    ).send({
+    const response = await BaseTest.post("products").send({
       productName: "Iphone 15",
       unitPrice: "1200",
       quantity: "1000",
@@ -43,15 +41,20 @@ describe("Test product function", () => {
   });
 
   it("should get product when given an id", async () => {
-    const response = await BaseTest.post(`products/${productId}`);
+    console.log(
+      productId,
+      ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> pdt id"
+    );
+    const response = await BaseTest.get(`products/${productId}`).send({});
+    console.log(response.body);
     expect(response.status).to.equal(200);
-    expect(response.body.product.productName).to.equal("test product");
-    expect(response.body.product.unitPrice).to.equal("100");
-    expect(response.body.product.quantity).to.equal("10");
+    expect(response.body.productName).to.equal("test product");
+    expect(response.body.unitPrice).to.equal(100);
+    expect(response.body.quantity).to.equal(10);
   });
 
   it("Should get all products", async () => {
-    const response = await BaseTest.get("products");
+    const response = await BaseTest.get("products").send({});
     expect(response.status).to.equal(200);
     expect(response.body).to.be.an("array");
   });

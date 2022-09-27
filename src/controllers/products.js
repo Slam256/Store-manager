@@ -33,9 +33,12 @@ class ProductController {
         quantity,
       };
 
-      await Product.create(product);
-
-      return res.status(201).json({ message: "Product added successfully" });
+      const createdProduct = await Product.create(product);
+      // maybe productName unique
+      // model??
+      return res
+        .status(201)
+        .json({ createdProduct, message: "Product added successfully" });
     } catch (e) {
       return res.status(400).json({ message: e });
     }
