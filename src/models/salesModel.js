@@ -2,14 +2,22 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const salesSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
+const SalesSchema = new Schema({
+  sold_by: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
-  productName: { type: String, required: true }, // admin, owner, attendant
-  quantity: Number,
-  total: Number,
+  // unit price and product name category name
+  product: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+  },
+  quantity_Sold: Number,
+  totalPrice: Number,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-export default salesModel = mongoose.model("Sales", salesSchema);
+export default mongoose.model("Sales", SalesSchema);
